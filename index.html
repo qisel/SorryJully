@@ -1,0 +1,182 @@
+import React, { useState, useEffect } from 'react';
+import { Heart, MessageCircle, ChevronRight, Sparkles, Smile, Ghost, Send, ArrowLeft } from 'lucide-react';
+
+const App = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isVisible, setIsVisible] = useState(true);
+  const phoneNumber = "087785077142";
+  const jullyPhoto = "https://scontent.fpku1-2.fna.fbcdn.net/v/t39.30808-6/599587333_884871087384487_2934029890944336089_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=833d8c&_nc_ohc=WKLLFLXcv2YQ7kNvwGbNr57&_nc_oc=AdkiH-bSG3iZIhENGyFdsnk_6weO8pPxqgVFEIjqNjqz7vx28tpuu-w6SNXGSSXDkqBwqkYThNssYXnGYFGlAf-s&_nc_zt=23&_nc_ht=scontent.fpku1-2.fna&_nc_gid=GEm4QXbx87uiSVoEfDEVig&oh=00_AfkVmf5IumKLm502EhHr8NbKOzlWNLkfDxOkYrEJ_C0t8w&oe=6949EBE7";
+
+  const nextSlide = () => {
+    setIsVisible(false);
+    setTimeout(() => {
+      setCurrentSlide(prev => prev + 1);
+      setIsVisible(true);
+    }, 300);
+  };
+
+  const prevSlide = () => {
+    setIsVisible(false);
+    setTimeout(() => {
+      setCurrentSlide(prev => prev - 1);
+      setIsVisible(true);
+    }, 300);
+  };
+
+  const sendWa = (message) => {
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.location.href = url;
+  };
+
+  const slides = [
+    // Slide 0: Pembuka dengan Foto
+    {
+      content: (
+        <div className="text-center">
+          <div className="relative inline-block mb-4">
+            {/* Foto Container dengan Bingkai Romantis */}
+            <div className="w-40 h-40 rounded-full border-4 border-white shadow-2xl overflow-hidden relative z-10">
+              <img 
+                src={jullyPhoto} 
+                alt="Jully" 
+                className="w-full h-full object-cover"
+                onError={(e) => { e.target.src = "https://via.placeholder.com/150?text=Jully"; }}
+              />
+            </div>
+            <div className="absolute -bottom-2 -right-2 bg-red-500 p-2 rounded-full z-20 shadow-lg">
+              <Heart className="w-6 h-6 text-white fill-white animate-pulse" />
+            </div>
+            <Sparkles className="absolute -top-4 -left-4 text-yellow-400 animate-bounce w-8 h-8" />
+          </div>
+          
+          <h1 className="text-3xl font-bold mt-4 text-slate-800 tracking-tight">Hai, Jully...</h1>
+          <p className="text-slate-500 mt-4 leading-relaxed px-6 text-sm">
+            Ada sesuatu yang ingin aku sampaikan lewat tulisan sederhana ini. <br/> Bisakah kamu meluangkan waktu sebentar?
+          </p>
+          <button 
+            onClick={nextSlide}
+            className="mt-8 bg-red-500 text-white px-10 py-4 rounded-full font-bold shadow-xl shadow-red-200 flex items-center gap-2 mx-auto hover:bg-red-600 active:scale-95 transition-all"
+          >
+            Boleh, Lanjut <ChevronRight size={20} />
+          </button>
+        </div>
+      )
+    },
+    // Slide 1: Cerita Awal
+    {
+      content: (
+        <div className="px-2">
+          <h2 className="text-2xl font-bold text-red-600 mb-6 flex items-center gap-2">
+            <Smile className="w-6 h-6" /> Awalnya...
+          </h2>
+          <div className="space-y-4 text-slate-600 leading-relaxed">
+            <div className="bg-white p-5 rounded-3xl border-l-8 border-red-400 shadow-sm relative overflow-hidden">
+              <div className="absolute top-0 right-0 p-2 opacity-10">
+                <Heart size={40} />
+              </div>
+              <p className="italic">
+                "Pertama kali kita ketemu, jujur rasanya biasa aja. Tapi ternyata kamu orangnya seru dan gampang banget bersahabat."
+              </p>
+            </div>
+            <p className="text-sm">
+              Gara-gara itu, aku jadi penasaran dan pengen kenal kamu lebih deket. Tapi... entah kenapa, segalanya perlahan berubah.
+            </p>
+          </div>
+          <div className="flex justify-between mt-12">
+            <button onClick={prevSlide} className="text-slate-400 text-sm flex items-center gap-1 font-medium"><ArrowLeft size={16}/> Kembali</button>
+            <button onClick={nextSlide} className="bg-slate-800 text-white px-6 py-3 rounded-2xl font-bold flex items-center gap-2 shadow-lg">Terus? <ChevronRight size={18}/></button>
+          </div>
+        </div>
+      )
+    },
+    // Slide 2: Kebingungan & Jokes
+    {
+      content: (
+        <div className="px-2">
+          <h2 className="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+            <Ghost className="w-6 h-6 text-blue-500" /> Tapi Sekarang...
+          </h2>
+          <p className="text-slate-600 mb-6 leading-relaxed">
+            Kamu jadi makin jutek, cuek, bahkan marah. Aku bingung salahku di mana, rasanya kayak nyari barang hilang di gudang Alfamart tapi gak ketemu-ketemu. 😭
+          </p>
+          <div className="bg-yellow-50 p-6 rounded-3xl border-2 border-dashed border-yellow-300 relative">
+            <p className="text-sm text-yellow-800 leading-relaxed">
+              "Eh, tapi Jul, aku baru tau kamu punya 5 bersaudara ya? Namanya: <span className="font-semibold text-red-500">Mei, Juni, Jully (Kamu), Agustus, sama September.</span>"
+            </p>
+            <span className="absolute -bottom-4 -right-2 text-3xl animate-bounce">😂</span>
+          </div>
+          <div className="flex justify-between mt-12">
+            <button onClick={prevSlide} className="text-slate-400 text-sm flex items-center gap-1 font-medium"><ArrowLeft size={16}/> Kembali</button>
+            <button onClick={nextSlide} className="bg-red-500 text-white px-6 py-3 rounded-2xl font-bold flex items-center gap-2 shadow-lg shadow-red-100">Lanjut <ChevronRight size={18}/></button>
+          </div>
+        </div>
+      )
+    },
+    // Slide 3: Penutup & Keputusan
+    {
+      content: (
+        <div className="text-center">
+          <div className="bg-white p-7 rounded-[2.5rem] shadow-2xl border border-red-50 flex flex-col items-center">
+            <div className="w-16 h-1 bg-slate-100 rounded-full mb-6" />
+            <h2 className="text-2xl font-bold text-slate-800 mb-4">Maafin Aku Ya?</h2>
+            <p className="text-slate-500 mb-6 text-sm leading-relaxed italic">
+              "Mungkin setelah ini aku tidak akan ke sini lagi. Aku tidak ingin membuatmu merasa tidak nyaman terus-menerus."
+            </p>
+            
+            <div className="bg-blue-50 p-5 rounded-3xl mb-8 border border-blue-100">
+              <p className="text-blue-800 text-[10px] font-bold uppercase tracking-[0.2em] mb-2">Tawaran Terakhir</p>
+              <p className="text-blue-900 text-sm leading-relaxed">
+                "Jika kamu mengonfirmasi pesan di bawah, aku akan kembali lagi. Tapi murni sebagai teman, bukan yang lain."
+              </p>
+            </div>
+            
+            <div className="w-full space-y-4">
+              <button 
+                onClick={() => sendWa("Hai, aku sudah baca semuanya. Oke, kita berteman ya! Jangan menghilang.")}
+                className="w-full bg-green-500 text-white py-4 rounded-2xl font-bold shadow-lg shadow-green-100 flex items-center justify-center gap-3 active:scale-95 transition-all"
+              >
+                <Send size={18} /> Konfirmasi: "Kita Teman"
+              </button>
+              
+              <button 
+                onClick={() => sendWa("Maaf, sepertinya lebih baik masing-masing dulu.")}
+                className="w-full bg-slate-50 text-slate-400 py-3 rounded-2xl font-semibold text-xs active:scale-95 transition-all"
+              >
+                Tetap Menghilang Saja
+              </button>
+            </div>
+          </div>
+          <p className="mt-8 text-[10px] text-slate-400 uppercase tracking-[0.3em] font-medium">Sekali lagi, Maaf ya Jully.</p>
+        </div>
+      )
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-[#FFF8F8] font-sans text-slate-800 flex items-center justify-center p-6 overflow-hidden relative">
+      {/* Elemen Dekoratif Latar Belakang */}
+      <div className="fixed top-[-5%] left-[-10%] w-72 h-72 bg-red-100 rounded-full blur-[80px] opacity-40 animate-pulse" />
+      <div className="fixed bottom-[-5%] right-[-10%] w-72 h-72 bg-blue-100 rounded-full blur-[80px] opacity-40" />
+
+      {/* Konten Utama */}
+      <div className="w-full max-w-sm relative z-10">
+        <div className={`transition-all duration-500 ease-out transform ${isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'}`}>
+          {slides[currentSlide].content}
+        </div>
+
+        {/* Indikator Slide (Dots) */}
+        <div className="flex justify-center gap-3 mt-10">
+          {slides.map((_, index) => (
+            <div 
+              key={index} 
+              className={`h-1.5 rounded-full transition-all duration-700 ${currentSlide === index ? 'w-10 bg-red-500' : 'w-2 bg-red-200'}`}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default App;
+
