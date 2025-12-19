@@ -68,9 +68,31 @@
             border: 6px solid white;
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
         }
+
+        /* Music Toggle UI */
+        #music-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 50;
+            background: rgba(255, 255, 255, 0.3);
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            backdrop-filter: blur(5px);
+        }
     </style>
 </head>
 <body class="bg-gradient-custom min-h-screen flex items-center justify-center p-6 text-slate-800">
+
+    <!-- Audio Element -->
+    <audio id="bgMusic" loop>
+        <source src="https://dn710203.ca.archive.org/0/items/maafkan-aku/Maafkan%20Aku.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="music-toggle" onclick="toggleMusic()">
+        <span id="music-icon">🎵</span>
+    </div>
 
     <div id="hearts-container"></div>
 
@@ -89,9 +111,9 @@
                 </div>
             </div>
             <h1 class="text-4xl font-bold text-white drop-shadow-md">Hai, Jully...</h1>
-            <p class="text-pink-50 mt-4 leading-relaxed font-medium px-2 text-lg italic">Sebelum masa ngojekku benar-benar selesai, ada yang ingin aku akui...</p>
-            <button onclick="goToSlide(1)" class="mt-10 bg-white text-pink-600 px-12 py-4 rounded-full font-bold shadow-2xl flex items-center gap-2 mx-auto active:scale-95 transition-all text-lg">
-                Lanjut ➔
+            <p class="text-pink-50 mt-4 leading-relaxed font-medium px-2 text-lg italic tracking-tight">Sebelum perjalananku di sini benar-benar berhenti, izinkan aku bicara jujur...</p>
+            <button onclick="startExperience()" class="mt-10 bg-white text-pink-600 px-12 py-4 rounded-full font-bold shadow-2xl flex items-center gap-2 mx-auto active:scale-95 transition-all text-lg animate-bounce">
+                Buka Pesan ➔
             </button>
         </div>
 
@@ -105,10 +127,10 @@
                 <h2 class="text-xl font-bold text-pink-600 mb-4 uppercase tracking-wider">Tentangmu...</h2>
                 <div class="bg-pink-50 p-5 rounded-3xl border-l-8 border-pink-400 shadow-inner mb-4">
                     <p class="font-medium text-pink-900 text-left text-sm leading-relaxed">
-                        Kamu punya kecantikan yang alami, tapi <span class="text-pink-600 font-bold underline">senyumanmu</span>-lah yang benar-benar mematikan.
+                        Kamu punya kecantikan yang alami, tapi <span class="text-pink-600 font-bold underline">senyumanmu</span> yang paling membuatku terdiam.
                     </p>
                 </div>
-                <p class="text-slate-600 text-left text-xs leading-relaxed italic px-2">Keramahanmu luar biasa, Jul. Kamu punya cara yang ajaib buat bikin orang lain—termasuk aku—merasa cepat dekat dan nyaman dalam sekejap.</p>
+                <p class="text-slate-600 text-left text-xs leading-relaxed italic px-2">Keramahanmu itu luar biasa, Jul. Kamu punya cara yang ajaib buat bikin siapa pun—termasuk aku—merasa cepat dekat dan nyaman dalam sekejap.</p>
                 <div class="flex justify-between mt-8">
                     <button onclick="goToSlide(0)" class="text-pink-400 font-bold text-sm"> Kembali</button>
                     <button onclick="goToSlide(2)" class="bg-pink-600 text-white px-6 py-3 rounded-2xl font-bold text-sm shadow-lg">Lanjut ➔</button>
@@ -119,17 +141,17 @@
         <!-- Slide 2: Candaan Jully -->
         <div id="slide-2" class="slide text-center">
             <div class="glass-card p-8 rounded-[2.5rem] shadow-2xl">
-                <h2 class="text-2xl font-bold text-slate-800 mb-6">Kabar Singkat</h2>
+                <h2 class="text-2xl font-bold text-slate-800 mb-6 font-serif italic">Kabar Singkat</h2>
                 <div class="text-slate-600 mb-6 text-left space-y-4">
-                    <p class="text-sm">Sepertinya bulan depan aku tidak disini lagi, bakal gantung helm dari dunia ojol. Ternyata bener kata orang...</p>
+                    <p class="text-sm">Sepertinya bulan depan aku sudah tak lagi mengaspal. Ternyata bener kata orang...</p>
                     <div class="bg-pink-100 p-4 rounded-2xl border-2 border-pink-200">
                         <p class="text-pink-900 font-bold text-sm">"Kenapa nama kamu Jully? Karena kalau July-at senyummu, rasanya nggak mau narik penumpang lain lagi." 😎</p>
                     </div>
                 </div>
                 
                 <div class="bg-gradient-to-br from-yellow-50 to-orange-50 p-5 rounded-3xl border-2 border-dashed border-yellow-300 relative mb-4">
-                    <p class="text-yellow-900 font-medium text-left text-xs">
-                        Tahu nggak perbedaannya kamu sama bulan Juli? Kalau Juli itu cuma numpang lewat kalender, kalau <span class="text-red-500 font-bold">Jully (Kamu)</span> itu menetap di hati.
+                    <p class="text-yellow-900 font-medium text-left text-xs italic">
+                        "Tahu nggak bedanya kamu sama bulan Juli? Juli cuma singgah di kalender, tapi Jully (Kamu) menetap selamanya di ingatanku."
                     </p>
                     <span class="absolute -bottom-4 -right-2 text-4xl">😆</span>
                 </div>
@@ -143,46 +165,42 @@
 
         <!-- Slide 3: Drama (Maafkan Aku) -->
         <div id="slide-3" class="slide text-center">
-            <div class="glass-card p-8 rounded-[2.5rem] shadow-2xl border-t-4 border-red-400">
-                <h2 class="text-2xl font-bold text-red-500 mb-4 uppercase tracking-tighter">Mungkin Aku Salah...</h2>
-                <div class="space-y-4 text-slate-700 text-sm leading-relaxed text-left italic">
-                    <p>"Jujur, hatiku terasa sangat berat. Aku merasa melakukan banyak kesalahan yang mungkin menyakiti atau mengganggumu."</p>
-                    <p>"Aku nggak mau pergi meninggalkan dunia ngojek ini dengan meninggalkan kesan yang buruk di matamu. Aku takut kamu cuma akan mengingat hal-hal mengecewakan dariku."</p>
-                    <p class="font-bold text-slate-900 text-base">"Maafkan aku ya Jul... Aku benar-benar minta maaf jika aku salah."</p>
+            <div class="glass-card p-8 rounded-[2.5rem] shadow-2xl border-t-8 border-red-500">
+                <h2 class="text-2xl font-extrabold text-red-600 mb-4 uppercase tracking-tighter">Mungkin Aku Salah...</h2>
+                <div class="space-y-4 text-slate-700 text-sm leading-relaxed text-left">
+                    <p class="italic">"Jujur, dadaku sesak setiap kali sadar betapa banyak kesalahanku padamu. Aku mungkin terlalu bodoh sampai menyakiti atau membuatmu tak nyaman."</p>
+                    <p class="italic">"Aku tak ingin menghilang begitu saja dengan beban rasa bersalah ini. Aku ingin kamu tahu kalau aku sangat menyesal atas segalanya."</p>
+                    <p class="font-bold text-red-700 text-base border-b border-red-200 pb-2">"Maafkan aku ya, Jul... Aku benar-benar minta maaf jika aku salah."</p>
                 </div>
                 <div class="mt-8 flex justify-between items-center">
                     <button onclick="goToSlide(2)" class="text-slate-400 font-bold text-xs uppercase">Kembali</button>
-                    <div class="animate-bounce">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                        </svg>
-                    </div>
-                    <button onclick="goToSlide(4)" class="bg-red-500 text-white px-6 py-2 rounded-xl font-bold shadow-lg">Akhir ➔</button>
+                    <div class="animate-ping bg-red-400 h-2 w-2 rounded-full"></div>
+                    <button onclick="goToSlide(4)" class="bg-red-600 text-white px-6 py-2 rounded-xl font-bold shadow-lg">Akhir ➔</button>
                 </div>
             </div>
         </div>
 
         <!-- Slide 4: Keputusan Akhir -->
         <div id="slide-4" class="slide text-center">
-            <div class="bg-white p-8 rounded-[3rem] shadow-2xl border border-white">
-                <h2 class="text-2xl font-extrabold text-slate-800 mb-4 italic">The Final Trip</h2>
-                <p class="text-slate-500 mb-6 italic text-sm leading-relaxed">"Aku hanya punya waktu sedikit lagi di sini. Bisakah kita berdamai sebelum aku benar-benar pergi?"</p>
-                <div class="bg-pink-50 p-5 rounded-3xl mb-8 border border-pink-100 shadow-sm">
-                    <p class="text-pink-800 text-[10px] font-bold uppercase tracking-widest mb-2">Pilihan Terakhir</p>
-                    <p class="text-pink-900 font-semibold text-sm">"Berikan aku kesempatan sekali lagi untuk memperbaiki semuanya, atau kamu ingin aku tetap menjauh?"</p>
+            <div class="bg-white p-8 rounded-[3rem] shadow-2xl border-4 border-pink-100">
+                <h2 class="text-2xl font-extrabold text-slate-800 mb-4 italic tracking-widest uppercase">The Final Trip</h2>
+                <p class="text-slate-500 mb-6 italic text-sm leading-relaxed font-semibold">"Kesempatan itu ibarat trip ojek terakhir. Sebelum aku benar-benar pergi, bisakah kita berdamai?"</p>
+                <div class="bg-pink-50 p-5 rounded-3xl mb-8 border border-pink-200 shadow-inner">
+                    <p class="text-pink-800 text-[10px] font-bold uppercase tracking-[0.2em] mb-2">Pilihan Terakhir</p>
+                    <p class="text-pink-900 font-bold text-sm">"Berikan aku kesempatan sekali lagi untuk memperbaiki semuanya, atau biarkan aku menjauh selamanya?"</p>
                 </div>
                 <div class="space-y-4">
-                    <button onclick="sendWa('Hai Jully, aku sudah baca semuanya. Senyummu memang juara sih! Oke, aku maafin dan kasih satu kesempatan lagi. Kita temenan baik ya.')" 
+                    <button onclick="sendWa('Hai Jully, pesannya sangat menyentuh. Senyummu dimaafkan kok! Oke, aku kasih satu kesempatan lagi. Mari berteman baik kembali.')" 
                             class="w-full bg-green-500 text-white py-4 rounded-2xl font-bold shadow-xl flex items-center justify-center gap-2 active:scale-95 transition-transform text-md">
                         Beri Kesempatan Sekali Lagi
                     </button>
-                    <button onclick="sendWa('Makasih ya buat ceritanya. Tapi sepertinya memang lebih baik kamu tetap menjauh saja. Sukses buat kesibukan barunya!')" 
-                            class="w-full bg-slate-100 text-slate-400 py-3 rounded-2xl font-bold text-[10px] active:scale-95 transition-transform uppercase tracking-tighter">
+                    <button onclick="sendWa('Makasih ya buat semua pengakuannya. Tapi untuk saat ini, sepertinya memang lebih baik jika kita tetap menjauh saja. Sukses ya!')" 
+                            class="w-full bg-slate-200 text-slate-500 py-3 rounded-2xl font-bold text-[10px] active:scale-95 transition-transform uppercase tracking-tighter">
                         TETAP MENJAUH SAJA
                     </button>
                 </div>
             </div>
-            <p class="mt-8 text-[10px] text-white/80 font-bold tracking-[0.4em] uppercase">Maaf ya Jully • Terimakasih</p>
+            <p class="mt-8 text-[10px] text-white/90 font-bold tracking-[0.5em] uppercase">Maaf ya Jully • Terimakasih</p>
         </div>
 
         <!-- Progress Dots -->
@@ -197,6 +215,24 @@
 
     <script>
         const phoneNumber = "+6287785077142";
+        const music = document.getElementById('bgMusic');
+        const musicIcon = document.getElementById('music-icon');
+
+        function startExperience() {
+            // Play music on first interaction
+            music.play().catch(e => console.log("Autoplay blocked"));
+            goToSlide(1);
+        }
+
+        function toggleMusic() {
+            if (music.paused) {
+                music.play();
+                musicIcon.innerText = "🎵";
+            } else {
+                music.pause();
+                musicIcon.innerText = "🔇";
+            }
+        }
 
         function goToSlide(slideIndex) {
             document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
@@ -214,7 +250,7 @@
         }
 
         const container = document.getElementById('hearts-container');
-        for (let i = 0; i < 15; i++) {
+        for (let i = 0; i < 20; i++) {
             const heart = document.createElement('div');
             heart.className = 'heart-particle';
             heart.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>';
