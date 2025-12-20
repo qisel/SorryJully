@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Untuk Jully</title>
+    <title>Surat Hati Untuk Jully</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -26,7 +26,7 @@
 
         .slide {
             display: none;
-            animation: slideIn 0.5s ease-out forwards;
+            animation: slideIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
         .slide.active {
@@ -34,182 +34,279 @@
         }
 
         @keyframes slideIn {
-            from { opacity: 0; transform: translateY(20px) scale(0.95); }
+            from { opacity: 0; transform: translateY(30px) scale(0.9); }
             to { opacity: 1; transform: translateY(0) scale(1); }
         }
 
         @keyframes float {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(10deg); }
+            50% { transform: translateY(-25px) rotate(15deg); }
         }
 
         .heart-particle {
             position: fixed;
-            color: rgba(255, 192, 203, 0.3);
+            color: rgba(255, 192, 203, 0.4);
             pointer-events: none;
             z-index: 0;
-            animation: float 6s ease-in-out infinite;
+            animation: float 7s ease-in-out infinite;
         }
 
         .dot {
-            width: 6px;
-            height: 6px;
+            width: 8px;
+            height: 8px;
             border-radius: 999px;
-            background: rgba(255, 255, 255, 0.4);
-            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.3);
+            transition: all 0.4s ease;
         }
 
         .dot.active {
-            width: 24px;
+            width: 32px;
             background: white;
+            box-shadow: 0 0 10px rgba(255,255,255,0.5);
         }
 
         .photo-frame {
-            border: 6px solid white;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            border: 8px solid white;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
         }
 
-        /* Music Toggle UI */
         #music-toggle {
             position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 50;
-            background: rgba(255, 255, 255, 0.3);
-            padding: 10px;
+            top: 25px;
+            right: 25px;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 12px;
             border-radius: 50%;
             cursor: pointer;
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .letter-box {
+            background: linear-gradient(135deg, #f43f5e, #ec4899);
+            color: white;
+            width: 36px;
+            height: 36px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            font-weight: 800;
+            margin-right: 14px;
+            box-shadow: 3px 3px 10px rgba(236, 72, 153, 0.4);
+            flex-shrink: 0;
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #fbcfe8;
+            border-radius: 10px;
         }
     </style>
 </head>
-<body class="bg-gradient-custom min-h-screen flex items-center justify-center p-6 text-slate-800">
+<body class="bg-gradient-custom min-h-screen flex items-center justify-center p-4 text-slate-800">
 
-    <!-- Audio Element -->
+    <!-- Latar Musik -->
     <audio id="bgMusic" loop>
         <source src="https://dn710203.ca.archive.org/0/items/maafkan-aku/Maafkan%20Aku.mp3" type="audio/mpeg">
     </audio>
 
-    <div id="music-toggle" onclick="toggleMusic()">
-        <span id="music-icon">🎵</span>
+    <!-- Tombol Musik -->
+    <div id="music-toggle" onclick="toggleMusic()" class="hover:rotate-12 transition-all">
+        <span id="music-icon" class="text-2xl">🎵</span>
     </div>
 
+    <!-- Partikel Hati -->
     <div id="hearts-container"></div>
 
     <div class="w-full max-w-sm relative z-10">
         
         <!-- Slide 0: Pembuka -->
         <div id="slide-0" class="slide active text-center">
-            <div class="relative inline-block mb-6">
-                <div class="absolute inset-0 bg-pink-400 rounded-full blur-xl opacity-40 animate-pulse"></div>
-                <div class="w-44 h-44 rounded-full border-8 border-white shadow-2xl overflow-hidden relative z-10 mx-auto">
+            <div class="relative inline-block mb-8">
+                <div class="absolute inset-0 bg-pink-300 rounded-full blur-3xl opacity-60 animate-pulse"></div>
+                <div class="w-48 h-48 rounded-full border-8 border-white shadow-2xl overflow-hidden relative z-10 mx-auto transition-transform hover:scale-105 duration-500">
                     <img src="https://scontent.fpku1-2.fna.fbcdn.net/v/t39.30808-6/599587333_884871087384487_2934029890944336089_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=833d8c&_nc_ohc=WKLLFLXcv2YQ7kNvwGbNr57&_nc_oc=AdkiH-bSG3iZIhENGyFdsnk_6weO8pPxqgVFEIjqNjqz7vx28tpuu-w6SNXGSSXDkqBwqkYThNssYXnGYFGlAf-s&_nc_zt=23&_nc_ht=scontent.fpku1-2.fna&_nc_gid=GEm4QXbx87uiSVoEfDEVig&oh=00_AfkVmf5IumKLm502EhHr8NbKOzlWNLkfDxOkYrEJ_C0t8w&oe=6949EBE7" 
-                         alt="Foto Jully 1" class="w-full h-full object-cover">
-                </div>
-                <div class="absolute -bottom-2 right-4 bg-pink-500 p-3 rounded-full z-20 shadow-xl border-2 border-white">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white fill-current" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                         alt="Foto Jully Utama" class="w-full h-full object-cover">
                 </div>
             </div>
-            <h1 class="text-4xl font-bold text-white drop-shadow-md">Hai, Jully...</h1>
-            <p class="text-pink-50 mt-4 leading-relaxed font-medium px-2 text-lg italic tracking-tight">Sebelum perjalananku di sini benar-benar berhenti, izinkan aku bicara jujur...</p>
-            <button onclick="startExperience()" class="mt-10 bg-white text-pink-600 px-12 py-4 rounded-full font-bold shadow-2xl flex items-center gap-2 mx-auto active:scale-95 transition-all text-lg animate-bounce">
-                Buka Pesan ➔
+            <h1 class="text-4xl font-extrabold text-white drop-shadow-xl tracking-tight">Halo, Jully...</h1>
+            <div class="mt-6 space-y-3 px-4">
+                <p class="text-pink-100 text-lg italic font-medium leading-tight">"Dalam setiap putaran roda motorku, ada pikiran yang selalu tertuju padamu."</p>
+                <p class="text-white text-xs font-light opacity-80">Aku tahu kata-kata tak bisa memutar waktu, tapi izinkan aku mencoba menjelaskan apa yang ada di hatiku.</p>
+            </div>
+            <button onclick="startExperience()" class="mt-12 bg-white text-pink-600 px-14 py-4 rounded-full font-bold shadow-2xl flex items-center gap-3 mx-auto active:scale-95 transition-all text-lg animate-bounce">
+                Buka Pesan Ini ➔
             </button>
         </div>
 
-        <!-- Slide 1: Senyuman & Keramahan -->
+        <!-- Slide 1: Makna Nama J-U-L-L-Y (Lebih Mendalam) -->
         <div id="slide-1" class="slide text-center">
-            <div class="glass-card p-6 rounded-[2.5rem] shadow-2xl">
-                <div class="w-32 h-32 rounded-2xl photo-frame overflow-hidden mx-auto mb-6 rotate-3">
-                    <img src="https://scontent.fupg7-1.fna.fbcdn.net/v/t39.30808-6/599957686_885009684037294_6180208046105305759_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=833d8c&_nc_ohc=mIVj3Js2y3wQ7kNvwETXERt&_nc_oc=AdmCGTJAl2rLBSd0l_GYBcxp_KL3oNdX7MgNGlMI2kSgVXSoHtfLM80Ouvxe71qlrQE&_nc_zt=23&_nc_ht=scontent.fupg7-1.fna&_nc_gid=Hj_larfuQ3ZEgAu2zRavMw&oh=00_AflLwUPrzPFgbHVlSol68m6byInzfdr9_KaPcwVUd_I54A&oe=694A3C8F" 
-                         alt="Foto Jully 2" class="w-full h-full object-cover">
-                </div>
-                <h2 class="text-xl font-bold text-pink-600 mb-4 uppercase tracking-wider">Tentangmu...</h2>
-                <div class="bg-pink-50 p-5 rounded-3xl border-l-8 border-pink-400 shadow-inner mb-4">
-                    <p class="font-medium text-pink-900 text-left text-sm leading-relaxed">
-                        Kamu punya kecantikan yang alami, tapi <span class="text-pink-600 font-bold underline">senyumanmu</span> yang paling membuatku terdiam.
-                    </p>
-                </div>
-                <p class="text-slate-600 text-left text-xs leading-relaxed italic px-2">Keramahanmu itu luar biasa, Jul. Kamu punya cara yang ajaib buat bikin siapa pun—termasuk aku—merasa cepat dekat dan nyaman dalam sekejap.</p>
-                <div class="flex justify-between mt-8">
-                    <button onclick="goToSlide(0)" class="text-pink-400 font-bold text-sm"> Kembali</button>
-                    <button onclick="goToSlide(2)" class="bg-pink-600 text-white px-6 py-3 rounded-2xl font-bold text-sm shadow-lg">Lanjut ➔</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 2: Candaan Jully -->
-        <div id="slide-2" class="slide text-center">
-            <div class="glass-card p-8 rounded-[2.5rem] shadow-2xl">
-                <h2 class="text-2xl font-bold text-slate-800 mb-6 font-serif italic">Kabar Singkat</h2>
-                <div class="text-slate-600 mb-6 text-left space-y-4">
-                    <p class="text-sm">Sepertinya bulan depan aku sudah tak lagi mengaspal. Ternyata bener kata orang...</p>
-                    <div class="bg-pink-100 p-4 rounded-2xl border-2 border-pink-200">
-                        <p class="text-pink-900 font-bold text-sm">"Kenapa nama kamu Jully? Karena kalau July-at senyummu, rasanya nggak mau narik penumpang lain lagi." 😎</p>
+            <div class="glass-card p-6 rounded-[2.5rem] shadow-2xl border-b-8 border-pink-300">
+                <h2 class="text-xl font-extrabold text-pink-600 mb-6 uppercase tracking-widest">Filosofi Namamu...</h2>
+                <div class="space-y-4 text-left max-h-[300px] overflow-y-auto pr-2 custom-scrollbar">
+                    <div class="flex items-start">
+                        <span class="letter-box">J</span>
+                        <div>
+                            <p class="text-slate-800 text-sm font-bold">Jatuh Hati pada Kebaikanmu</p>
+                            <p class="text-[10px] text-slate-500 italic">Bukan cuma parasmu, tapi cara tulusmu menghargai orang kecil sepertiku.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="letter-box">U</span>
+                        <div>
+                            <p class="text-slate-800 text-sm font-bold">Untaian Doa yang Tak Putus</p>
+                            <p class="text-[10px] text-slate-500 italic">Meski kita jarang bicara, namamu sering kusebut dalam harap agar kau selalu bahagia.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="letter-box">L</span>
+                        <div>
+                            <p class="text-slate-800 text-sm font-bold">Langkah yang Terasa Ringan</p>
+                            <p class="text-[10px] text-slate-500 italic">Mengantarmu adalah trip yang tak ingin kuselesaikan dengan cepat.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="letter-box">L</span>
+                        <div>
+                            <p class="text-slate-800 text-sm font-bold">Lengkung Senyum Paling Indah</p>
+                            <p class="text-[10px] text-slate-500 italic">Dunia terasa lebih baik hanya dengan melihatmu tersenyum melalui spion.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="letter-box">Y</span>
+                        <div>
+                            <p class="text-slate-800 text-sm font-bold">Yang Selalu Aku Kenang</p>
+                            <p class="text-[10px] text-slate-500 italic">Namamu terukir indah dalam lembaran perjalananku selama narik ojek.</p>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="bg-gradient-to-br from-yellow-50 to-orange-50 p-5 rounded-3xl border-2 border-dashed border-yellow-300 relative mb-4">
-                    <p class="text-yellow-900 font-medium text-left text-xs italic">
-                        "Tahu nggak bedanya kamu sama bulan Juli? Juli cuma singgah di kalender, tapi Jully (Kamu) menetap selamanya di ingatanku."
-                    </p>
-                    <span class="absolute -bottom-4 -right-2 text-4xl">😆</span>
-                </div>
-                
-                <div class="flex justify-between mt-10">
-                    <button onclick="goToSlide(1)" class="text-pink-400 font-bold"> Kembali</button>
-                    <button onclick="goToSlide(3)" class="bg-pink-600 text-white px-8 py-3 rounded-2xl font-bold">Lanjut ➔</button>
+                <div class="flex justify-between mt-8">
+                    <button onclick="goToSlide(0)" class="text-pink-400 font-bold text-sm hover:underline"> Kembali</button>
+                    <button onclick="goToSlide(2)" class="bg-pink-600 text-white px-8 py-3 rounded-2xl font-bold text-sm shadow-lg hover:bg-pink-700 transition-colors">Lanjut ➔</button>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 3: Drama (Maafkan Aku) -->
+        <!-- Slide 2: Senyuman & Aura -->
+        <div id="slide-2" class="slide text-center">
+            <div class="glass-card p-6 rounded-[2.5rem] shadow-2xl">
+                <div class="w-36 h-36 rounded-3xl photo-frame overflow-hidden mx-auto mb-6 rotate-3 hover:rotate-0 transition-all duration-500">
+                    <img src="https://scontent.fupg7-1.fna.fbcdn.net/v/t39.30808-6/599957686_885009684037294_6180208046105305759_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=833d8c&_nc_ohc=mIVj3Js2y3wQ7kNvwETXERt&_nc_oc=AdmCGTJAl2rLBSd0l_GYBcxp_KL3oNdX7MgNGlMI2kSgVXSoHtfLM80Ouvxe71qlrQE&_nc_zt=23&_nc_ht=scontent.fupg7-1.fna&_nc_gid=Hj_larfuQ3ZEgAu2zRavMw&oh=00_AflLwUPrzPFgbHVlSol68m6byInzfdr9_KaPcwVUd_I54A&oe=694A3C8F" 
+                         alt="Foto Jully Senyum" class="w-full h-full object-cover">
+                </div>
+                <h2 class="text-xl font-bold text-pink-600 mb-4 tracking-tighter uppercase">Magnet Kebaikanmu</h2>
+                <div class="bg-gradient-to-r from-pink-50 to-white p-6 rounded-3xl border-l-8 border-pink-500 shadow-inner mb-6 text-left">
+                    <p class="text-slate-700 text-xs leading-relaxed italic">
+                        "Jul, mungkin kamu tak sadar, tapi keramahanmu itu seperti oase. Di antara ratusan penumpang, caramu menyapa dan berterima kasih membuat pekerjaanku terasa jauh lebih mulia."
+                    </p>
+                </div>
+                <p class="text-slate-500 text-left text-[11px] leading-relaxed px-2">
+                    Kamu punya aura yang menyejukkan. Aku yang tadinya lelah dengan debu jalanan, tiba-tiba merasa punya energi baru hanya karena keramahanmu. Terima kasih sudah menjadi sosok yang sehangat itu.
+                </p>
+                <div class="flex justify-between mt-8">
+                    <button onclick="goToSlide(1)" class="text-pink-400 font-bold text-sm"> Kembali</button>
+                    <button onclick="goToSlide(3)" class="bg-pink-600 text-white px-8 py-3 rounded-2xl font-bold text-sm shadow-lg">Lanjut ➔</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Cerita Ojol & Candaan -->
         <div id="slide-3" class="slide text-center">
-            <div class="glass-card p-8 rounded-[2.5rem] shadow-2xl border-t-8 border-red-500">
-                <h2 class="text-2xl font-extrabold text-red-600 mb-4 uppercase tracking-tighter">Mungkin Aku Salah...</h2>
-                <div class="space-y-4 text-slate-700 text-sm leading-relaxed text-left">
-                    <p class="italic">"Jujur, dadaku sesak setiap kali sadar betapa banyak kesalahanku padamu. Aku mungkin terlalu bodoh sampai menyakiti atau membuatmu tak nyaman."</p>
-                    <p class="italic">"Aku tak ingin menghilang begitu saja dengan beban rasa bersalah ini. Aku ingin kamu tahu kalau aku sangat menyesal atas segalanya."</p>
-                    <p class="font-bold text-red-700 text-base border-b border-red-200 pb-2">"Maafkan aku ya, Jul... Aku benar-benar minta maaf jika aku salah."</p>
+            <div class="glass-card p-8 rounded-[2.5rem] shadow-2xl">
+                <h2 class="text-2xl font-bold text-slate-800 mb-6 italic">Trip Terakhir Kita?</h2>
+                <div class="text-slate-600 mb-6 text-left space-y-4">
+                    <p class="text-sm">Bulan depan rute perjalananku akan berbeda. Aku tak lagi memegang stang motor ini di aplikasi.</p>
+                    <div class="bg-pink-100 p-6 rounded-3xl border-2 border-pink-200 relative overflow-hidden group">
+                        <div class="absolute -right-4 -bottom-4 text-6xl opacity-10 group-hover:scale-110 transition-transform">❤</div>
+                        <p class="text-pink-900 font-bold text-sm italic leading-snug">"Tahu kenapa namamu Jully? Karena kalau July-at kamu lama-lama, hatiku rasanya mau 'cancel' semua orderan lain cuma buat nungguin kamu selesai urusan." 😎</p>
+                    </div>
+                    <p class="text-[11px] font-medium leading-relaxed text-slate-500 border-l-4 border-yellow-400 pl-4 py-2">
+                        "Juli mungkin cuma satu bulan dalam setahun, tapi Jully bagiku adalah anugerah yang pengen aku syukuri selamanya."
+                    </p>
+                    <p class="text-[10px] text-slate-400 italic font-light">Aku ngojek cuma sebentar buat nambah pengalaman, tapi kenal sama kamu itu pelajaran paling berharga buat hatiku.</p>
+                </div>
+                <div class="flex justify-between mt-10">
+                    <button onclick="goToSlide(2)" class="text-pink-400 font-bold"> Kembali</button>
+                    <button onclick="goToSlide(4)" class="bg-pink-600 text-white px-8 py-3 rounded-2xl font-bold shadow-md">Lanjut ➔</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Permohonan Maaf Tulus -->
+        <div id="slide-4" class="slide text-center">
+            <div class="glass-card p-8 rounded-[2.5rem] shadow-2xl border-t-[12px] border-red-500">
+                <h2 class="text-2xl font-black text-red-600 mb-4 uppercase tracking-tighter">Dari Lubuk Hatiku...</h2>
+                <div class="space-y-4 text-slate-700 text-[13px] leading-relaxed text-left">
+                    <p class="italic font-medium">"Aku minta maaf jika kehadiranku malah menjadi beban bagimu. Jika kata-kataku lewat chat atau tindakanku membuat kenyamananmu terusik."</p>
+                    <p class="font-bold text-slate-900">"Aku tak sanggup membayangkan diriku menjadi kenangan buruk dalam hidupmu. Kamu terlalu baik untuk mendapatkan perlakuan yang tidak menyenangkan."</p>
+                    <div class="bg-red-50 p-4 rounded-2xl border border-red-200 shadow-sm">
+                        <p class="font-extrabold text-red-700 text-sm">"Tolong beri aku maaf, Jul. Biarkan aku pergi dengan perasaan tenang, tanpa rasa bersalah yang terus menghantuiku setiap hari."</p>
+                    </div>
                 </div>
                 <div class="mt-8 flex justify-between items-center">
-                    <button onclick="goToSlide(2)" class="text-slate-400 font-bold text-xs uppercase">Kembali</button>
-                    <div class="animate-ping bg-red-400 h-2 w-2 rounded-full"></div>
-                    <button onclick="goToSlide(4)" class="bg-red-600 text-white px-6 py-2 rounded-xl font-bold shadow-lg">Akhir ➔</button>
+                    <button onclick="goToSlide(3)" class="text-slate-400 font-bold text-xs uppercase hover:text-red-400">Kembali</button>
+                    <button onclick="goToSlide(5)" class="bg-red-600 text-white px-8 py-2 rounded-xl font-bold shadow-xl hover:bg-red-700">Pilihanmu ➔</button>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 4: Keputusan Akhir -->
-        <div id="slide-4" class="slide text-center">
+        <!-- Slide 5: Keputusan & Harapan -->
+        <div id="slide-5" class="slide text-center">
             <div class="bg-white p-8 rounded-[3rem] shadow-2xl border-4 border-pink-100">
-                <h2 class="text-2xl font-extrabold text-slate-800 mb-4 italic tracking-widest uppercase">The Final Trip</h2>
-                <p class="text-slate-500 mb-6 italic text-sm leading-relaxed font-semibold">"Kesempatan itu ibarat trip ojek terakhir. Sebelum aku benar-benar pergi, bisakah kita berdamai?"</p>
-                <div class="bg-pink-50 p-5 rounded-3xl mb-8 border border-pink-200 shadow-inner">
-                    <p class="text-pink-800 text-[10px] font-bold uppercase tracking-[0.2em] mb-2">Pilihan Terakhir</p>
-                    <p class="text-pink-900 font-bold text-sm">"Berikan aku kesempatan sekali lagi untuk memperbaiki semuanya, atau biarkan aku menjauh selamanya?"</p>
+                <div class="w-20 h-20 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner">
+                    <span class="text-4xl">💌</span>
                 </div>
+                <h2 class="text-2xl font-extrabold text-slate-800 mb-2 italic uppercase">Pintu Terakhir</h2>
+                <p class="text-pink-500 font-bold text-[10px] mb-4 tracking-[0.4em]">HANYA UNTUKMU</p>
+                <p class="text-slate-500 mb-8 italic text-sm leading-relaxed px-4">
+                    "Sebelum aku menutup lembaran ini, apakah ada sepercik maaf untukku agar kita bisa kembali menjadi rekan yang baik?"
+                </p>
                 <div class="space-y-4">
-                    <button onclick="sendWa('Hai Jully, pesannya sangat menyentuh. Senyummu dimaafkan kok! Oke, aku kasih satu kesempatan lagi. Mari berteman baik kembali.')" 
-                            class="w-full bg-green-500 text-white py-4 rounded-2xl font-bold shadow-xl flex items-center justify-center gap-2 active:scale-95 transition-transform text-md">
-                        Beri Kesempatan Sekali Lagi
+                    <button onclick="sendWa('Hai Jully di sini, aku sudah baca semua pesannya. Makasih ya atas kejujurannya. Iya, aku maafkan kok! Mari kita lupakan yang lalu dan berteman baik saja ke depannya.')" 
+                            class="w-full bg-green-500 text-white py-5 rounded-3xl font-bold shadow-2xl active:scale-95 transition-all text-sm flex items-center justify-center gap-3">
+                        <span class="text-lg">💝</span> Maafkan & Berteman Baik
                     </button>
-                    <button onclick="sendWa('Makasih ya buat semua pengakuannya. Tapi untuk saat ini, sepertinya memang lebih baik jika kita tetap menjauh saja. Sukses ya!')" 
-                            class="w-full bg-slate-200 text-slate-500 py-3 rounded-2xl font-bold text-[10px] active:scale-95 transition-transform uppercase tracking-tighter">
-                        TETAP MENJAUH SAJA
+                    <button onclick="goToSlide(6)" 
+                            class="w-full bg-slate-100 text-slate-400 py-4 rounded-3xl font-bold text-xs active:scale-95 transition-all hover:bg-slate-200">
+                        Maaf, Aku Pilih Menjauh
                     </button>
                 </div>
             </div>
-            <p class="mt-8 text-[10px] text-white/90 font-bold tracking-[0.5em] uppercase">Maaf ya Jully • Terimakasih</p>
         </div>
 
-        <!-- Progress Dots -->
-        <div class="flex justify-center gap-2 mt-12">
+        <!-- Slide 6: Perpisahan Paling Damai -->
+        <div id="slide-6" class="slide text-center">
+            <div class="glass-card p-10 rounded-[3.5rem] shadow-2xl border-2 border-slate-200">
+                <div class="text-6xl mb-8 animate-pulse">🕊️</div>
+                <h2 class="text-2xl font-bold text-slate-800 mb-6">Aku Sangat Menghargaimu</h2>
+                <div class="text-slate-600 text-[13px] leading-relaxed mb-8 space-y-4 text-left font-medium">
+                    <p class="italic">"Terima kasih, Jully. Meskipun berat, aku menghormati keputusanmu. Setidaknya aku sudah menyampaikan apa yang mengganjal di hatiku."</p>
+                    <p>"Jaga dirimu baik-baik ya. Jangan pernah biarkan dunia mengubah keramahan dan senyum manismu."</p>
+                </div>
+                <p class="text-pink-600 font-bold text-[11px] mb-4 uppercase tracking-[0.3em] bg-pink-50 py-2 rounded-lg">Harapan Terakhirku:</p>
+                <div class="bg-gradient-to-b from-white to-slate-50 p-6 rounded-3xl text-[11px] text-slate-500 italic leading-relaxed text-center border border-slate-200 shadow-sm">
+                    "Semoga setiap rute yang kamu pilih selalu membawamu pada kebahagiaan. Semoga kamu dipertemukan dengan orang-orang sebaik dirimu. Selamat tinggal, Jully yang istimewa."
+                </div>
+                <button onclick="sendWa('Makasih ya buat semua pesannya, aku hargai usahamu. Meskipun aku memilih menjauh, aku tetap mendoakan yang terbaik buat kamu di sana. Semangat buat ke depannya!')" 
+                        class="mt-10 w-full border-2 border-slate-400 text-slate-500 py-4 rounded-3xl font-bold text-[10px] uppercase hover:bg-slate-50 transition-all tracking-widest">
+                    Kirim Pesan Perpisahan Baik
+                </button>
+            </div>
+        </div>
+
+        <!-- Titik Navigasi -->
+        <div class="flex justify-center gap-3 mt-12">
             <div class="dot active" id="dot-0"></div>
             <div class="dot" id="dot-1"></div>
             <div class="dot" id="dot-2"></div>
             <div class="dot" id="dot-3"></div>
             <div class="dot" id="dot-4"></div>
+            <div class="dot" id="dot-5"></div>
+            <div class="dot" id="dot-6"></div>
         </div>
     </div>
 
@@ -219,8 +316,9 @@
         const musicIcon = document.getElementById('music-icon');
 
         function startExperience() {
-            // Play music on first interaction
-            music.play().catch(e => console.log("Autoplay blocked"));
+            music.play().catch(e => {
+                console.log("Audio autoplay dicegah browser.");
+            });
             goToSlide(1);
         }
 
@@ -228,36 +326,56 @@
             if (music.paused) {
                 music.play();
                 musicIcon.innerText = "🎵";
+                musicIcon.parentElement.classList.add('rotate-12');
             } else {
                 music.pause();
                 musicIcon.innerText = "🔇";
+                musicIcon.parentElement.classList.remove('rotate-12');
             }
         }
 
         function goToSlide(slideIndex) {
-            document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
-            document.querySelectorAll('.dot').forEach(d => d.classList.remove('active'));
+            document.querySelectorAll('.slide').forEach(s => {
+                s.classList.remove('active');
+            });
+            document.querySelectorAll('.dot').forEach(d => {
+                d.classList.remove('active');
+            });
             
             const targetSlide = document.getElementById(`slide-${slideIndex}`);
             if (targetSlide) {
                 targetSlide.classList.add('active');
-                document.getElementById(`dot-${slideIndex}`).classList.add('active');
+                const dot = document.getElementById(`dot-${slideIndex}`);
+                if (dot) dot.classList.add('active');
             }
         }
 
         function sendWa(message) {
-            window.location.href = `https://api.whatsapp.com/send?phone=${phoneNumber.replace('+', '')}&text=${encodeURIComponent(message)}`;
+            const cleanNumber = phoneNumber.replace(/\D/g, '');
+            // Memastikan URL dibuka dengan benar di mobile/desktop
+            const waUrl = `https://wa.me/${cleanNumber}?text=${encodeURIComponent(message)}`;
+            window.open(waUrl, '_blank');
         }
 
+        // Animasi partikel hati yang lebih variatif
         const container = document.getElementById('hearts-container');
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < 30; i++) {
             const heart = document.createElement('div');
             heart.className = 'heart-particle';
-            heart.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>';
-            heart.style.left = Math.random() * 100 + '%';
-            heart.style.top = Math.random() * 100 + '%';
-            heart.style.animationDelay = Math.random() * 5 + 's';
-            heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            heart.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>';
+            
+            const randomX = Math.random() * 100;
+            const randomY = Math.random() * 100;
+            const randomDelay = Math.random() * 7;
+            const randomSize = Math.random() * 20 + 10;
+            const randomOpacity = Math.random() * 0.4 + 0.1;
+
+            heart.style.left = randomX + '%';
+            heart.style.top = randomY + '%';
+            heart.style.animationDelay = randomDelay + 's';
+            heart.style.fontSize = randomSize + 'px';
+            heart.style.opacity = randomOpacity;
+            
             container.appendChild(heart);
         }
     </script>
