@@ -3,225 +3,215 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Penjelasan Jujur Untuk Jully</title>
+    <title>BAST BUMDes Sinar Usaha - Barakati</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Playfair+Display:italic,wght@700&display=swap" rel="stylesheet">
     <style>
+        @media print {
+            body { background: white; margin: 0; padding: 0; }
+            .no-print { display: none; }
+            .page { 
+                margin: 0; 
+                box-shadow: none; 
+                border: none;
+                width: 100%;
+                padding: 10mm;
+            }
+        }
         body {
-            font-family: 'Quicksand', sans-serif;
-            background-color: #020617;
-            color: #f8fafc;
-            margin: 0;
-            overflow: hidden;
+            background-color: #f3f4f6;
+            font-family: 'Times New Roman', Times, serif;
+            color: #000;
         }
-
-        .font-serif-italic {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
+        .page {
+            background: white;
+            width: 210mm;
+            min-height: 297mm;
+            margin: 20px auto;
+            padding: 20mm;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
-
-        .slide {
-            display: none;
-            height: 100vh;
+        .kop-border {
+            border-bottom: 4px double black;
+            margin-top: 8px;
+            margin-bottom: 20px;
+        }
+        .content-area {
+            text-align: justify;
+            line-height: 1.5;
+            font-size: 12pt;
+        }
+        table {
             width: 100%;
-            padding: 2rem;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            border-collapse: collapse;
+            margin: 12px 0;
+        }
+        .table-data th, .table-data td {
+            border: 1px solid black;
+            padding: 6px 10px;
+        }
+        .signature-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
             text-align: center;
-            animation: fadeIn 0.6s ease-in-out;
         }
-
-        .slide.active {
-            display: flex;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .glass-box {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 2rem;
-            padding: 2rem;
-            width: 100%;
-            max-width: 400px;
-        }
-
-        .img-frame {
-            width: 100%;
-            max-height: 250px;
-            object-fit: contain;
-            border-radius: 1rem;
-            margin-bottom: 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-        }
-
-        .btn-primary {
-            background: #475569;
-            color: white;
-            padding: 0.75rem 2rem;
-            border-radius: 999px;
-            font-weight: 700;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(71, 85, 105, 0.3);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: rgba(255, 255, 255, 0.6);
-            padding: 0.5rem 1.5rem;
-            border-radius: 999px;
-            font-size: 0.8rem;
-        }
-
-        .dot-nav {
-            position: fixed;
-            bottom: 2rem;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-
-        .dot {
-            width: 8px;
-            height: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            transition: all 0.3s;
-        }
-
-        .dot.active {
-            background: #94a3b8;
-            width: 24px;
-        }
-        
-        .baper-tag {
-            background: #1e293b;
-            color: #94a3b8;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 10px;
-            font-weight: bold;
-            display: inline-block;
-            margin-top: 5px;
+        .signature-box {
+            width: 42%;
         }
     </style>
 </head>
 <body>
 
-    <audio id="bgMusic" loop>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" type="audio/mpeg">
-    </audio>
+    <div class="no-print flex justify-center py-4 bg-gray-900 text-white gap-4 sticky top-0 z-10 shadow-lg">
+        <span class="flex items-center text-sm font-medium">Pratinjau Dokumen BAST Barakati</span>
+        <button onclick="window.print()" class="bg-green-600 hover:bg-green-500 text-white px-6 py-1.5 rounded text-sm font-bold transition shadow-md uppercase">
+            Cetak / Simpan PDF
+        </button>
+    </div>
 
-    <!-- Slide 1: Pembuka -->
-    <div id="slide-0" class="slide active">
-        <div class="glass-box">
-            <img src="https://scontent.fpku1-2.fna.fbcdn.net/v/t39.30808-6/599587333_884871087384487_2934029890944336089_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=833d8c&_nc_ohc=WKLLFLXcv2YQ7kNvwGbNr57&_nc_oc=AdkiH-bSG3iZIhENGyFdsnk_6weO8pPxqgVFEIjqNjqz7vx28tpuu-w6SNXGSSXDkqBwqkYThNssYXnGYFGlAf-s&_nc_zt=23&_nc_ht=scontent.fpku1-2.fna&_nc_gid=GEm4QXbx87uiSVoEfDEVig&oh=00_AfkVmf5IumKLm502EhHr8NbKOzlWNLkfDxOkYrEJ_C0t8w&oe=6949EBE7" class="img-frame" alt="Jully">
-            <h1 class="font-serif-italic text-2xl text-slate-200 mb-2">Penjelasan Terbuka</h1>
-            <p class="text-xs text-slate-400 mb-6 italic leading-relaxed">
-                "Aku ingin meluruskan pandanganmu, agar tidak ada lagi rasa risih yang tak seharusnya ada."
+    <div class="page">
+        <!-- KOP SURAT SESUAI INSTRUKSI -->
+        <div class="text-center">
+            <h1 class="text-lg font-bold uppercase leading-tight">Pemerintah Kabupaten Gorontalo</h1>
+            <h1 class="text-lg font-bold uppercase leading-tight">Kecamatan Batudaa</h1>
+            <h1 class="text-lg font-bold uppercase leading-tight">Desa Barakati</h1>
+            <h2 class="text-xl font-bold uppercase leading-tight mt-1">Badan Usaha Milik Desa (BUMDes) Sinar Usaha</h2>
+            <p class="text-sm italic mt-1 font-serif">Alamat: Jalan Raja Bobihoe, Pos 96271</p>
+            <div class="kop-border"></div>
+        </div>
+
+        <!-- JUDUL SURAT -->
+        <div class="text-center my-6">
+            <h3 class="text-lg font-bold underline uppercase">Berita Acara Serah Terima Aset dan Sisa Kas</h3>
+            <p class="text-md mt-1">Nomor: &nbsp; .......... / .......... / BUMDes-SU / .......... / 2026</p>
+        </div>
+
+        <div class="content-area">
+            <p class="mb-4">
+                Pada hari ini, .................... Tanggal .................... bulan Februari tahun Dua Ribu Dua Puluh Enam (2026), bertempat di Kantor Desa Barakati, kami yang bertanda tangan di bawah ini:
             </p>
-            <button onclick="startApp()" class="btn-primary text-sm">Buka Penjelasan ➔</button>
-        </div>
-    </div>
 
-    <!-- Slide 2: Sifat Pengamat -->
-    <div id="slide-1" class="slide">
-        <div class="glass-box">
-            <h2 class="text-lg font-bold text-white mb-4">Aku Senang Memperhatikan</h2>
-            <div class="text-sm text-slate-300 space-y-4 text-left italic">
-                <p>"Jujur, aku orangnya senang memperhatikan orang lain; sifat mereka, cara kerja mereka, dan karakter mereka. Bukan berarti hanya kamu satu-satunya orang yang aku perhatikan."</p>
-                <p>"Ke semua orang pun aku melakukan hal yang sama. Jadi, tolong <span class="text-rose-400 font-bold underline">jangan baper</span>. Ini hanya caraku memahami dunia."</p>
-            </div>
-            <div class="mt-8 flex justify-between">
-                <button onclick="goToSlide(0)" class="btn-outline">Kembali</button>
-                <button onclick="goToSlide(2)" class="btn-primary text-sm">Lanjut</button>
-            </div>
-        </div>
-    </div>
+            <div class="mb-6">
+                <table style="border: none;">
+                    <tr style="border: none;">
+                        <td style="border: none; vertical-align: top; width: 35px;">1.</td>
+                        <td style="border: none; vertical-align: top; width: 140px;"><strong>Nama</strong></td>
+                        <td style="border: none; vertical-align: top;">: <strong>USMAN MOONGGALO</strong></td>
+                    </tr>
+                    <tr style="border: none;">
+                        <td style="border: none;"></td>
+                        <td style="border: none; vertical-align: top;"><strong>Jabatan</strong></td>
+                        <td style="border: none; vertical-align: top;">: Direktur BUMDes Sinar Usaha</td>
+                    </tr>
+                    <tr style="border: none;">
+                        <td style="border: none;"></td>
+                        <td style="border: none;"></td>
+                        <td style="border: none;">Dalam hal ini bertindak untuk dan atas nama pengurus BUMDes, selanjutnya disebut sebagai <strong>PIHAK PERTAMA</strong>.</td>
+                    </tr>
+                </table>
 
-    <!-- Slide 3: Tentang Tempat Kerja & Foto -->
-    <div id="slide-2" class="slide">
-        <div class="glass-box">
-            <img src="https://scontent.fpku1-2.fna.fbcdn.net/v/t39.30808-6/605347894_887528957118700_1410105191907807778_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=833d8c&_nc_ohc=YXjlz76voq8Q7kNvwH77DMa&_nc_oc=AdlqeNkS1yQ2jrTPPW-iz2TiKdLfUk1MSOngWsqxjChng1BNGiNpPp7PyJ26ce_74JLg9UgsfjsulFBeET0NT4AC&_nc_zt=23&_nc_ht=scontent.fpku1-2.fna&_nc_gid=WvM2Vbhzx9tqiqMzr8nsHA&oh=00_Afmf2VsvgwvgUJcQRH4-fvxsXftsUx3D4ksygHkqBs_1gA&oe=694E99AF" class="img-frame" alt="Penjelasan Foto">
-            <div class="text-xs text-left text-slate-300 leading-relaxed bg-black/40 p-4 rounded-xl border border-white/5">
-                <p>"Aku suka memperhatikan tempat kerjamu karena aku ingin meniru sistem kerjanya untuk menambah pengetahuanku sendiri. Mengenai foto, itu murni untuk mengenalmu, tidak ada niat aneh-aneh. <span class="text-rose-400">Jangan baper</span>."</p>
+                <table style="border: none; margin-top: 15px;">
+                    <tr style="border: none;">
+                        <td style="border: none; vertical-align: top; width: 35px;">2.</td>
+                        <td style="border: none; vertical-align: top; width: 140px;"><strong>Nama</strong></td>
+                        <td style="border: none; vertical-align: top;">: <strong>NURYADIN JERCY BADARU</strong></td>
+                    </tr>
+                    <tr style="border: none;">
+                        <td style="border: none;"></td>
+                        <td style="border: none; vertical-align: top;"><strong>Jabatan</strong></td>
+                        <td style="border: none; vertical-align: top;">: Kepala Desa Barakati</td>
+                    </tr>
+                    <tr style="border: none;">
+                        <td style="border: none;"></td>
+                        <td style="border: none;"></td>
+                        <td style="border: none;">Dalam hal ini bertindak untuk dan atas nama Pemerintah Desa Barakati, selanjutnya disebut sebagai <strong>PIHAK KEDUA</strong>.</td>
+                    </tr>
+                </table>
             </div>
-            <div class="mt-6 flex justify-between">
-                <button onclick="goToSlide(1)" class="btn-outline">Kembali</button>
-                <button onclick="goToSlide(3)" class="btn-primary text-sm">Lanjut</button>
-            </div>
-        </div>
-    </div>
 
-    <!-- Slide 4: Realita Perbedaan Usia -->
-    <div id="slide-3" class="slide">
-        <div class="glass-box">
-            <img src="https://scontent.fpku1-2.fna.fbcdn.net/v/t39.30808-6/601909380_887528853785377_8879236714007873962_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=833d8c&_nc_ohc=ya5DgH_lFGgQ7kNvwFdsWfh&_nc_oc=AdlksJd42Kvc2KEI6sOsIdmmUjJYFlstiMO9daYYbnsS2j5-mzdkclbLYSBJM1mvVvq3nuMwN01Pd4ks4GmPpZQp&_nc_zt=23&_nc_ht=scontent.fpku1-2.fna&_nc_gid=quj3XxkxZJFJsnJyIXHmHA&oh=00_Afn1fSukIg2kHPwEm77z1GCJPNTKWrBnbiNmhkQCB9bYWA&oe=694EB616" class="img-frame" alt="Penjelasan Akhir">
-            <div class="text-xs text-left italic space-y-3">
-                <p>"Aku sadar diri, Jul. Perbedaan kita jauh (1989-2002) dan kamu punya pacar. Mana mungkin aku berani macam-macam."</p>
-                <p>"Kemarin aku hanya numpang masuk karena di luar sangat panas, tapi sekarang aku sudah turuti maumu untuk tidak masuk lagi selamanya."</p>
-            </div>
-            <div class="mt-6 flex justify-between">
-                <button onclick="goToSlide(2)" class="btn-outline">Kembali</button>
-                <button onclick="goToSlide(4)" class="btn-primary text-sm">Akhir</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 5: Keputusan Menjauh -->
-    <div id="slide-4" class="slide">
-        <div class="glass-box">
-            <h2 class="font-serif-italic text-2xl text-white mb-4">Clear Ya...</h2>
-            <p class="text-xs text-slate-400 mb-8 leading-relaxed">
-                "Kini aku tak lagi mengganggumu. Aku pergi dengan tenang karena semua sudah kujelaskan. Semoga harimu menyenangkan."
+            <p class="mb-4">
+                <strong>PIHAK PERTAMA</strong> menyerahkan kepada <strong>PIHAK KEDUA</strong>, dan <strong>PIHAK KEDUA</strong> menyatakan telah menerima aset fisik berupa material pengadaan dan sisa saldo kas modal awal periode 2022-2026 dengan rincian sebagai berikut:
             </p>
-            <div class="space-y-3">
-                <button onclick="sendWa('Halo Jully, ini aku. Aku ingin meluruskan bahwa aku senang memperhatikan sifat dan cara kerja banyak orang sebagai pengetahuan, bukan cuma kamu saja. Aku memperhatikan tempat kerjamu untuk meniru sistemnya demi ilmu. Jadi, tolong jangan baper. Aku sadar diri beda usia kita jauh dan kamu punya pacar. Kini aku tidak akan mengganggumu lagi.')" class="w-full btn-primary text-xs">
-                    Kirim Penjelasan Akhir ke WA
-                </button>
-                <div class="baper-tag">NO FEELINGS ATTACHED</div>
+
+            <h4 class="font-bold underline uppercase text-sm mb-2 italic">A. Rincian Aset Fisik (Material Pengadaan)</h4>
+            <table class="table-data">
+                <thead>
+                    <tr class="bg-gray-100">
+                        <th style="width: 50px;">No</th>
+                        <th>Uraian Barang / Material</th>
+                        <th style="width: 120px;">Jumlah</th>
+                        <th style="width: 120px;">Keterangan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td style="text-align: left;">Baja Ringan Kanal C 75</td>
+                        <td>14 Batang</td>
+                        <td>Baik (Belum Dirakit)</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td style="text-align: left;">Spandek (Atap & Dinding)</td>
+                        <td>15 Lembar</td>
+                        <td>Baik (Belum Dirakit)</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td style="text-align: left;">Kanal U-Track</td>
+                        <td>4 Pack</td>
+                        <td>Kondisi Baru</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td style="text-align: left;">Baut & Sekrup Baja</td>
+                        <td>2 Pack</td>
+                        <td>Lengkap</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4 class="font-bold underline uppercase text-sm mt-6 mb-2 italic">B. Rincian Sisa Kas Modal Awal</h4>
+            <div class="border border-black p-4 bg-gray-50">
+                <table style="border: none; margin: 0;">
+                    <tr style="border: none;">
+                        <td style="border: none; width: 250px;">Total Penyertaan Modal Desa</td>
+                        <td style="border: none;">: Rp 10.000.000</td>
+                    </tr>
+                    <tr style="border: none;">
+                        <td style="border: none;">Realisasi Pengadaan & Operasional</td>
+                        <td style="border: none;">: (Rp 3.394.000)</td>
+                    </tr>
+                    <tr style="border: none;">
+                        <td style="border: none;"><strong>SALDO KAS YANG DISERAHKAN</strong></td>
+                        <td style="border: none;">: <strong>Rp 6.606.000</strong></td>
+                    </tr>
+                </table>
+                <p class="mt-2 italic text-sm">Terbilang: "Enam Juta Enam Ratus Enam Ribu Rupiah"</p>
+            </div>
+
+            <p class="mt-6">
+                Demikian Berita Acara Serah Terima ini dibuat dalam rangkap 2 (dua) untuk dipergunakan sebagai bukti tanggung jawab administratif perpindahan pengawasan aset dan dana kas demi kelancaran tata kelola BUMDes Sinar Usaha di masa mendatang.
+            </p>
+
+            <!-- TANDA TANGAN -->
+            <div class="signature-container">
+                <div class="signature-box">
+                    <p class="font-bold uppercase">Pihak Kedua,</p>
+                    <p>Kepala Desa Barakati</p>
+                    <br><br><br><br>
+                    <p class="font-bold underline uppercase">Nuryadin Jercy Badaru</p>
+                </div>
+                <div class="signature-box">
+                    <p class="font-bold uppercase">Pihak Pertama,</p>
+                    <p>Direktur BUMDes Sinar Usaha</p>
+                    <br><br><br><br>
+                    <p class="font-bold underline uppercase">Usman Moonggalo</p>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="dot-nav">
-        <div class="dot active" id="dot-0"></div>
-        <div class="dot" id="dot-1"></div>
-        <div class="dot" id="dot-2"></div>
-        <div class="dot" id="dot-3"></div>
-        <div class="dot" id="dot-4"></div>
-    </div>
-
-    <script>
-        const music = document.getElementById('bgMusic');
-
-        function startApp() {
-            music.play().catch(() => console.log("Music blocked"));
-            goToSlide(1);
-        }
-
-        function goToSlide(n) {
-            document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
-            document.querySelectorAll('.dot').forEach(d => d.classList.remove('active'));
-            
-            document.getElementById(`slide-${n}`).classList.add('active');
-            document.getElementById(`dot-${n}`).classList.add('active');
-        }
-
-        function sendWa(msg) {
-            const phoneNumber = "6287785077142";
-            window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(msg)}`, '_blank');
-        }
-    </script>
 </body>
 </html>
-
 
