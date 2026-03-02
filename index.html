@@ -38,7 +38,7 @@
         .content-area {
             text-align: justify;
             line-height: 1.5;
-            font-size: 12pt;
+            font-size: 11pt;
         }
         table {
             width: 100%;
@@ -52,25 +52,29 @@
         .signature-container {
             display: flex;
             justify-content: space-between;
-            margin-top: 50px;
+            margin-top: 30px;
             text-align: center;
         }
         .signature-box {
             width: 42%;
+        }
+        .witness-container {
+            margin-top: 40px;
+            text-align: center;
         }
     </style>
 </head>
 <body>
 
     <div class="no-print flex justify-center py-4 bg-gray-900 text-white gap-4 sticky top-0 z-10 shadow-lg">
-        <span class="flex items-center text-sm font-medium">Pratinjau Dokumen BAST Barakati</span>
+        <span class="flex items-center text-sm font-medium">Pratinjau Dokumen BAST Barakati (Dengan Saksi)</span>
         <button onclick="window.print()" class="bg-green-600 hover:bg-green-500 text-white px-6 py-1.5 rounded text-sm font-bold transition shadow-md uppercase">
             Cetak / Simpan PDF
         </button>
     </div>
 
     <div class="page">
-        <!-- KOP SURAT SESUAI INSTRUKSI -->
+        <!-- KOP SURAT -->
         <div class="text-center">
             <h1 class="text-lg font-bold uppercase leading-tight">Pemerintah Kabupaten Gorontalo</h1>
             <h1 class="text-lg font-bold uppercase leading-tight">Kecamatan Batudaa</h1>
@@ -81,7 +85,7 @@
         </div>
 
         <!-- JUDUL SURAT -->
-        <div class="text-center my-6">
+        <div class="text-center my-4">
             <h3 class="text-lg font-bold underline uppercase">Berita Acara Serah Terima Aset dan Sisa Kas</h3>
             <p class="text-md mt-1">Nomor: &nbsp; .......... / .......... / BUMDes-SU / .......... / 2026</p>
         </div>
@@ -110,7 +114,7 @@
                     </tr>
                 </table>
 
-                <table style="border: none; margin-top: 15px;">
+                <table style="border: none; margin-top: 10px;">
                     <tr style="border: none;">
                         <td style="border: none; vertical-align: top; width: 35px;">2.</td>
                         <td style="border: none; vertical-align: top; width: 140px;"><strong>Nama</strong></td>
@@ -134,7 +138,7 @@
             </p>
 
             <h4 class="font-bold underline uppercase text-sm mb-2 italic">A. Rincian Aset Fisik (Material Pengadaan)</h4>
-            <table class="table-data">
+            <table class="table-data text-sm">
                 <thead>
                     <tr class="bg-gray-100">
                         <th style="width: 50px;">No</th>
@@ -173,7 +177,7 @@
 
             <h4 class="font-bold underline uppercase text-sm mt-6 mb-2 italic">B. Rincian Sisa Kas Modal Awal</h4>
             <div class="border border-black p-4 bg-gray-50">
-                <table style="border: none; margin: 0;">
+                <table style="border: none; margin: 0; font-size: 11pt;">
                     <tr style="border: none;">
                         <td style="border: none; width: 250px;">Total Penyertaan Modal Desa</td>
                         <td style="border: none;">: Rp 10.000.000</td>
@@ -190,23 +194,44 @@
                 <p class="mt-2 italic text-sm">Terbilang: "Enam Juta Enam Ratus Enam Ribu Rupiah"</p>
             </div>
 
-            <p class="mt-6">
-                Demikian Berita Acara Serah Terima ini dibuat dalam rangkap 2 (dua) untuk dipergunakan sebagai bukti tanggung jawab administratif perpindahan pengawasan aset dan dana kas demi kelancaran tata kelola BUMDes Sinar Usaha di masa mendatang.
+            <p class="mt-4">
+                Demikian Berita Acara Serah Terima ini dibuat dalam rangkap 2 (dua) untuk dipergunakan sebagaimana mestinya, disaksikan oleh unsur Pengawas (BPD) dan unsur Pengurus BUMDes.
             </p>
 
-            <!-- TANDA TANGAN -->
+            <!-- TANDA TANGAN UTAMA -->
             <div class="signature-container">
                 <div class="signature-box">
-                    <p class="font-bold uppercase">Pihak Kedua,</p>
-                    <p>Kepala Desa Barakati</p>
-                    <br><br><br><br>
+                    <p class="font-bold uppercase text-sm">Pihak Kedua,</p>
+                    <p class="text-sm">Kepala Desa Barakati</p>
+                    <br><br><br>
                     <p class="font-bold underline uppercase">Nuryadin Jercy Badaru</p>
                 </div>
                 <div class="signature-box">
-                    <p class="font-bold uppercase">Pihak Pertama,</p>
-                    <p>Direktur BUMDes Sinar Usaha</p>
-                    <br><br><br><br>
+                    <p class="font-bold uppercase text-sm">Pihak Pertama,</p>
+                    <p class="text-sm">Direktur BUMDes Sinar Usaha</p>
+                    <br><br><br>
                     <p class="font-bold underline uppercase">Usman Moonggalo</p>
+                </div>
+            </div>
+
+            <!-- SAKSI-SAKSI -->
+            <div class="witness-container">
+                <p class="font-bold uppercase text-sm mb-6 underline">Saksi-Saksi:</p>
+                <div class="flex justify-between">
+                    <div class="signature-box">
+                        <p class="text-sm font-bold">1. Badan Permusyawaratan Desa (BPD)</p>
+                        <p class="text-xs italic">(Selaku Pengawas)</p>
+                        <br><br><br>
+                        <p class="font-bold underline uppercase">..................................................</p>
+                        <p class="text-xs">Ketua BPD Desa Barakati</p>
+                    </div>
+                    <div class="signature-box">
+                        <p class="text-sm font-bold">2. Pengurus BUMDes Sinar Usaha</p>
+                        <p class="text-xs italic">(Sekretaris/Bendahara)</p>
+                        <br><br><br>
+                        <p class="font-bold underline uppercase">..................................................</p>
+                        <p class="text-xs">Saksi Pengurus</p>
+                    </div>
                 </div>
             </div>
         </div>
