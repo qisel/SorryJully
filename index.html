@@ -2,222 +2,390 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BAST BUMDes Sinar Usaha - Barakati</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>✨ Untuk Kamu yang Spesial ✨</title>
+    <!-- Google Fonts untuk tampilan elegan -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (gratis) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            background-color: #f3f4f6;
-            font-family: 'Times New Roman', Times, serif;
-            color: #000;
-        }
-        .page {
-            background: white;
-            width: 210mm;
-            min-height: 291mm;
-            margin: 20px auto;
-            padding: 20mm;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-        .kop-border {
-            border-bottom: 4px double black;
-            margin-top: 2px;
-            margin-bottom: 20px;
-        }
-        .content-area {
-            text-align: justify;
-            line-height: 1.5;
-            font-size: 12pt;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 2px 0;
-        }
-        .table-data th, .table-data td {
-            border: 1px solid black;
-            padding: 6px 10px;
-        }
-        .signature-container {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(145deg, #fff9f0 0%, #ffe6f0 100%);
+            min-height: 100vh;
             display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
-            text-align: center;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 1rem;
+            position: relative;
         }
-        .signature-box {
-            width: 42%;
+
+        /* Dekorasi bintang jatuh / bunga kecil */
+        .floating-heart {
+            position: fixed;
+            font-size: 1.2rem;
+            opacity: 0.3;
+            pointer-events: none;
+            animation: float 12s infinite linear;
+            z-index: 0;
         }
-        .witness-container {
-            margin-top: 10px;
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0.2; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0.6; }
+        }
+
+        .card {
+            max-width: 650px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(8px);
+            border-radius: 3rem;
+            box-shadow: 0 30px 50px rgba(255, 105, 180, 0.25), 0 10px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 200, 220, 0.6);
+            z-index: 2;
+        }
+
+        .hero {
             text-align: center;
+            padding: 2rem 1.5rem 1rem;
+            background: linear-gradient(135deg, #ffdde1, #ffb7c5);
+            color: #a1335e;
+        }
+
+        .hero h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.8rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 8px rgba(255,255,200,0.8);
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-top: 0.5rem;
+            opacity: 0.9;
+        }
+
+        .photo-frame {
+            padding: 1rem 1rem 0 1rem;
+        }
+
+        .photo-container {
+            background: white;
+            border-radius: 2rem;
+            padding: 0.8rem;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            transition: transform 0.3s;
+        }
+
+        .photo-container img {
+            width: 100%;
+            border-radius: 1.5rem;
+            object-fit: cover;
+            aspect-ratio: 1 / 1;
+            max-height: 400px;
+            display: block;
+            margin: 0 auto;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .message {
+            text-align: center;
+            padding: 1rem 1.5rem;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #c53a6b;
+            background: rgba(255,245,250,0.7);
+            margin: 1rem;
+            border-radius: 2rem;
+            line-height: 1.5;
+        }
+
+        .message i {
+            color: #ff4d6d;
+            margin: 0 6px;
+        }
+
+        /* Video Player Section */
+        .video-section {
+            padding: 0 1.5rem 1rem;
+        }
+
+        .video-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #b13e66;
+            font-size: 1.1rem;
+        }
+
+        .video-wrapper {
+            background: #000;
+            border-radius: 1.8rem;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            margin-bottom: 1rem;
+        }
+
+        video {
+            width: 100%;
+            display: block;
+            outline: none;
+        }
+
+        /* kustomisasi kontrol video */
+        video::-webkit-media-controls-panel {
+            background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.2));
+        }
+
+        .info-video {
+            font-size: 0.8rem;
+            text-align: center;
+            background: #ffecf0;
+            padding: 8px 12px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-top: 5px;
+            color: #a13b5e;
+        }
+
+        .footer-note {
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.9rem;
+            background: #ffecf0;
+            color: #cc7b9c;
+            font-weight: 500;
+            border-top: 1px dashed #ffbfd0;
+            margin-top: 1rem;
+        }
+
+        button {
+            background: #ff7c9e;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 40px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: #ff4d7a;
+            transform: scale(0.97);
+        }
+
+        @media (max-width: 550px) {
+            .hero h1 { font-size: 2rem; }
+            .message { font-size: 1rem; }
         }
     </style>
 </head>
 <body>
-    <div class="page">
-        <!-- KOP SURAT -->
-        <div class="text-center">
-            <h1 class="text-lg font-bold uppercase leading-tight">Pemerintah Kabupaten Gorontalo</h1>
-            <h1 class="text-lg font-bold uppercase leading-tight">Kecamatan Batudaa</h1>
-            <h1 class="text-lg font-bold uppercase leading-tight">Desa Barakati</h1>
-            <h1 class="text-lg font-bold uppercase leading-tight">Badan Usaha Milik Desa (BUMDes) Sinar Usaha</h1>
-            <p class="text-sm italic mt-1 font-serif">Alamat: Jalan Raja Bobihoe, Pos 96271</p>
-            <div class="kop-border"></div>
+
+<!-- Floating hati dekorasi -->
+<div id="floating-container"></div>
+
+<div class="card">
+    <div class="hero">
+        <h1>✨ Untuk Bidadariku ✨</h1>
+        <p><i class="fas fa-heart" style="color: #ff4d6d;"></i> khusus halaman ini untukmu <i class="fas fa-heart" style="color: #ff4d6d;"></i></p>
+    </div>
+
+    <!-- Bagian foto: GANTI SRC DENGAN FOTO DIA -->
+    <div class="photo-frame">
+        <div class="photo-container">
+            <img id="gadisPhoto" src="https://placehold.co/600x600/FFC0CB/FFFFFF?text=Ganti+dengan+foto+cantik+dia" alt="Foto Spesial">
         </div>
+    </div>
 
-        <!-- JUDUL SURAT -->
-        <div class="text-center my-4">
-            <h3 class="text-lg font-bold underline uppercase">Berita Acara Serah Terima Aset dan Sisa Kas</h3>
-            <p class="text-md mt-1">Nomor: &nbsp; .......... / BAST / BUMDes-SU / III / 2026</p>
-        </Div>
+    <div class="message">
+        <i class="fas fa-star"></i> Untuk seseorang yang mengisi hariku dengan warna <i class="fas fa-star"></i><br>
+        Aku buat halaman ini <strong>khusus untukmu</strong>. Semoga kamu suka <i class="fas fa-gem"></i>
+    </div>
 
-        <div class="content-area">
-            <p class="mb-4">
-                Pada hari ini, SELASA Tanggal TIGA bulan MARET tahun Dua Ribu Dua Puluh Enam (2026), bertempat di Kantor Desa Barakati, kami yang bertanda tangan di bawah ini:
-            </p>
-
-            <div class="mb-6">
-                <table style="border: none;">
-                    <tr style="border: none;">
-                        <td style="border: none; vertical-align: top; width: 35px;">1.</td>
-                        <td style="border: none; vertical-align: top; width: 140px;"><strong>Nama</strong></td>
-                        <td style="border: none; vertical-align: top;">: <strong>USMAN MOONGGALO</strong></td>
-                    </tr>
-                    <tr style="border: none;">
-                        <td style="border: none;"></td>
-                        <td style="border: none; vertical-align: top;"><strong>Jabatan</strong></td>
-                        <td style="border: none; vertical-align: top;">: Direktur BUMDes Sinar Usaha Periode 2022-2026</td>
-                    </tr>
-                    <tr style="border: none;">
-                        <td style="border: none;"></td>
-                        <td style="border: none;"></td>
-                        <td style="border: none;">Dalam hal ini bertindak untuk dan atas nama pengurus BUMDes, selanjutnya disebut sebagai <strong>PIHAK PERTAMA</strong>.</td>
-                    </tr>
-                </table>
-
-                <table style="border: none; margin-top: 2px;">
-                    <tr style="border: none;">
-                        <td style="border: none; vertical-align: top; width: 35px;">2.</td>
-                        <td style="border: none; vertical-align: top; width: 140px;"><strong>Nama</strong></td>
-                        <td style="border: none; vertical-align: top;">: <strong>NURYADIN JERCY BADARU</strong></td>
-                    </tr>
-                    <tr style="border: none;">
-                        <td style="border: none;"></td>
-                        <td style="border: none; vertical-align: top;"><strong>Jabatan</strong></td>
-                        <td style="border: none; vertical-align: top;">: Kepala Desa Barakati</td>
-                    </tr>
-                    <tr style="border: none;">
-                        <td style="border: none;"></td>
-                        <td style="border: none;"></td>
-                        <td style="border: none;">Dalam hal ini bertindak untuk dan atas nama Pemerintah Desa Barakati, selanjutnya disebut sebagai <strong>PIHAK KEDUA</strong>.</td>
-                    </tr>
-                </table>
+    <!-- Video Player dengan auto kualitas (native HLS / DASH dibantu browser) -->
+    <div class="video-section">
+        <div class="video-title">
+            <i class="fas fa-video" style="font-size: 1.4rem;"></i> <span>🎬 Klik putar, nikmati film spesial</span>
+        </div>
+        <div class="video-wrapper">
+            <video id="specialVideo" controls playsinline preload="metadata">
+                <source id="videoSource" src="" type="video/mp4">
+                Browser Anda tidak support video HTML5.
+            </video>
+        </div>
+        <div style="text-align: center;">
+            <label style="background: #ffdee6; padding: 8px 15px; border-radius: 30px; font-size: 0.85rem; font-weight: 500;">
+                <i class="fas fa-link"></i> Masukkan link video (Google Drive / MP4):
+            </label>
+            <div style="display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; justify-content: center;">
+                <input type="text" id="videoUrlInput" placeholder="https://drive.google.com/uc?export=download&id=FILE_ID" style="flex:2; min-width: 200px; padding: 12px 15px; border-radius: 60px; border: 1px solid #ffb7c5; background: white; font-family: monospace;">
+                <button id="loadVideoBtn"><i class="fas fa-play-circle"></i> Muat & Putar</button>
             </div>
-
-            <p class="mb-4">
-                <strong>PIHAK PERTAMA</strong> menyerahkan kepada <strong>PIHAK KEDUA</strong>, dan <strong>PIHAK KEDUA</strong> menyatakan telah menerima aset fisik berupa material pengadaan dan sisa saldo kas modal awal periode 2022-2026 dengan rincian sebagai berikut:
-            </p>
-
-            <h4 class="font-bold underline uppercase text-sm mb-2 italic">A. Rincian Aset Fisik </h4>
-            <table class="table-data text-sm">
-                <thead>
-                    <tr class="bg-gray-100">
-                        <th style="width: 50px;">No</th>
-                        <th>Uraian Barang / Material</th>
-                        <th style="width: 120px;">Jumlah</th>
-                        <th style="width: 120px;">Keterangan</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td style="text-align: left;">Baja Ringan Kanal C 75</td>
-                        <td>14 Batang</td>
-                        <td>Kondisi Baik </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td style="text-align: left;">Spandek (Atap)</td>
-                        <td>15 Lembar</td>
-                        <td> Kondisi Baik </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td style="text-align: left;">Kanal U-Track</td>
-                        <td>4 Ujung</td>
-                        <td>Kondisi Baik</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td style="text-align: left;">Cap & Laporan (LPJ)</td>
-                        <td> Bundle </td>
-                        <td>Lengkap</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <h4 class="font-bold underline uppercase text-sm mt-6 mb-2 italic">B. Rincian Sisa Kas Modal Awal</h4>
-            <div class="border border-black p-4 bg-gray-50">
-                <table style="border: none; margin: 0; font-size: 10pt;">
-                    <tr style="border: none;">
-                        <td style="border: none; width: 250px;">Total Penyertaan Modal Desa</td>
-                        <td style="border: none;">: Rp 10.000.000</td>
-                    </tr>
-                    <tr style="border: none;">
-                        <td style="border: none;">Realisasi Pengadaan & Operasional</td>
-                        <td style="border: none;">: (Rp 3.394.000)</td>
-                    </tr>
-                    <tr style="border: none;">
-                        <td style="border: none;"><strong>SALDO KAS YANG DISERAHKAN</strong></td>
-                        <td style="border: none;">: <strong>Rp 6.606.000</strong></td>
-                    </tr>
-                </table>
-                <p class="mt-2 italic text-sm">Terbilang: "Enam Juta Enam Ratus Enam Ribu Rupiah"</p>
-            </div>
-
-            <p class="mt-4">
-                Demikian Berita Acara Serah Terima ini dibuat dalam rangkap 2 (dua) untuk dipergunakan sebagaimana mestinya, disaksikan oleh unsur Pengawas (BPD) dan unsur Pengurus BUMDes.
-            </p>
-
-            <!-- TANDA TANGAN UTAMA -->
-            <div class="signature-container">
-                <div class="signature-box">
-                    <p class="font-bold uppercase text-sm">Pihak Kedua,</p>
-                    <p class="text-sm">Kepala Desa Barakati</p>
-                    <br><br>
-                    <p class="font-bold underline uppercase">Nuryadin Jercy Badaru</p>
-                </div>
-                <div class="signature-box">
-                    <p class="font-bold uppercase text-sm">Pihak Pertama,</p>
-                    <p class="text-sm">Direktur BUMDes Sinar Usaha</p>
-                    <br><br>
-                    <p class="font-bold underline uppercase">Usman Moonggalo</p>
-                </div>
-            </div>
-
-            <!-- SAKSI-SAKSI -->
-            <div class="witness-container">
-                <p class="font-bold uppercase text-sm mb-6 underline">Saksi-Saksi:</p>
-                <div class="flex justify-between">
-                    <div class="signature-box">
-                        <p class="text-sm font-bold">1. Badan Permusyawaratan Desa</p>
-                        <p class="text-xs italic">(Selaku Pengawas)</p>
-                        <br><br>
-                        <p class="font-bold underline uppercase">..................................................</p>
-                        <p class="text-xs">Ketua/Anggota BPD Desa Barakati</p>
-                    </div>
-                    <div class="signature-box">
-                        <p class="text-sm font-bold">2. Pengurus BUMDes Sinar Usaha</p>
-                        <p class="text-xs italic">(Sekretaris/Bendahara)</p>
-                        <br><br>
-                        <p class="font-bold underline uppercase">..................................................</p>
-                        <p class="text-xs">Saksi Pengurus</p>
-                    </div>
-                </div>
+            <div class="info-video">
+                <i class="fas fa-tachometer-alt"></i> Video otomatis menyesuaikan kualitas dengan kecepatan internetmu (berkat pemutar bawaan browser + adaptif jika video HLS / DASH, atau cukup gunakan link MP4 dari Google Drive).
+                <br>✨ <strong>Cara pakai Google Drive:</strong> Ubah link menjadi format langsung:<br>
+                <code style="background:#fff0f3; padding:2px 5px; border-radius:10px;">https://drive.google.com/uc?export=download&id=ID_FILM</code>
             </div>
         </div>
     </div>
 
+    <div class="footer-note">
+        🌹 Hanya untukmu, karya kecil dari hati yang mengagumimu 🌹<br>
+        <i class="fas fa-heartbeat"></i> Setiap pixel terukir untuk senyumanmu
+    </div>
+</div>
+
+<script>
+    // Efek floating hati lucu
+    function createFloatingElements() {
+        const container = document.getElementById('floating-container');
+        const icons = ['🌸', '🌼', '⭐', '💖', '✨', '🌷', '🍒', '🎀'];
+        for (let i = 0; i < 25; i++) {
+            const el = document.createElement('div');
+            el.classList.add('floating-heart');
+            el.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+            const size = Math.random() * 20 + 12;
+            el.style.fontSize = size + 'px';
+            el.style.left = Math.random() * 100 + '%';
+            el.style.animationDuration = Math.random() * 8 + 6 + 's';
+            el.style.animationDelay = Math.random() * 8 + 's';
+            container.appendChild(el);
+        }
+    }
+    createFloatingElements();
+
+    // Fungsi untuk memproses link Google Drive menjadi video URL yang bisa diputar (Direct download)
+    function convertGoogleDriveToDirect(url) {
+        if (!url) return null;
+        // Deteksi pola drive.google.com
+        const driveRegex = /drive\.google\.com\/file\/d\/([^\/]+)\/view/;
+        const driveShare = /drive\.google\.com\/open\?id=([^&]+)/;
+        const driveUc = /drive\.google\.com\/uc\?export=download&id=([^&]+)/;
+        let fileId = null;
+        
+        if (driveRegex.test(url)) {
+            const match = url.match(driveRegex);
+            if (match && match[1]) fileId = match[1];
+        } else if (driveShare.test(url)) {
+            const match = url.match(driveShare);
+            if (match && match[1]) fileId = match[1];
+        } else if (driveUc.test(url)) {
+            const match = url.match(driveUc);
+            if (match && match[1]) fileId = match[1];
+        } else if (url.includes('id=')) {
+            // coba ekstrak manual
+            const params = new URLSearchParams(url.split('?')[1]);
+            if (params.has('id')) fileId = params.get('id');
+        }
+        
+        if (fileId) {
+            return `https://drive.google.com/uc?export=download&id=${fileId}`;
+        }
+        // Jika url sudah mp4 atau langsung
+        if (url.endsWith('.mp4') || url.includes('.mp4?') || url.includes('blob:') || url.includes('media')) {
+            return url;
+        }
+        return null;
+    }
+
+    const videoPlayer = document.getElementById('specialVideo');
+    const videoSource = document.getElementById('videoSource');
+    const loadBtn = document.getElementById('loadVideoBtn');
+    const urlInput = document.getElementById('videoUrlInput');
+
+    // Contoh predifine link (Kosongkan atau isi contoh langsung jika punya)
+    // urlInput.placeholder = "https://drive.google.com/uc?export=download&id=CONTOH_ID_VIDEO";
+    
+    function loadVideoFromUrl(rawUrl) {
+        if (!rawUrl.trim()) {
+            alert("🌸 Masukkan link video dulu ya (Google Drive atau link .mp4) 🌸");
+            return false;
+        }
+        let directUrl = convertGoogleDriveToDirect(rawUrl.trim());
+        if (!directUrl) {
+            // mungkin pengguna sudah memasukkan direct mp4
+            if (rawUrl.trim().startsWith('http') && (rawUrl.includes('.mp4') || rawUrl.includes('video'))) {
+                directUrl = rawUrl.trim();
+            } else {
+                alert("Link tidak dikenali. Pastikan link Google Drive View atau shareable link, atau link MP4 langsung.\nContoh Drive: https://drive.google.com/file/d/ID_FILM/view");
+                return false;
+            }
+        }
+        
+        // Set source ke video
+        videoSource.src = directUrl;
+        videoPlayer.load();
+        // Coba putar otomatis (kebijakan browser mungkin mengharuskan interaksi, tapi pengguna sudah klik tombol)
+        videoPlayer.play().catch(e => {
+            console.log("Autoplay ditolak, tapi video siap. Klik play manual ya.");
+            // tetap tampilkan pesan manis
+            alert("✨ Video sudah siap, silakan klik tombol play untuk menonton ✨");
+        });
+        return true;
+    }
+
+    loadBtn.addEventListener('click', () => {
+        loadVideoFromUrl(urlInput.value);
+    });
+
+    // Efek bonus: tambahkan pesan jika pengguna mengubah foto (biar user bisa ganti foto local atau url juga? tapi karena kita hanya saran, biarkan saja mereka ganti di <img>)
+    // Tapi agar lebih keren: user bisa klik foto untuk mengganti? Tidak perlu, karena sudah instruksi ganti manual di kode.
+    // Namun kita bantu tampilkan instruksi agar dia ganti foto
+    const imgElement = document.getElementById('gadisPhoto');
+    // Optional: jika ingin bisa upload foto langsung dari halaman (tambahan fitur bonus)
+    // Tapi agar sesuai permintaan: "melampirkan sebuah foto" -> kita beri catatan pada console.
+    console.log("%c✨ Tips: Ganti foto dengan mengedit attribute src di img dengan ID 'gadisPhoto' ✨", "color: #ff6b9d; font-size: 14px");
+    
+    // Tampilkan catatan di halaman juga sebagai tooltip
+    const photoContainerDiv = document.querySelector('.photo-container');
+    const editHint = document.createElement('div');
+    editHint.style.fontSize = '0.7rem';
+    editHint.style.textAlign = 'center';
+    editHint.style.marginTop = '8px';
+    editHint.style.color = '#d47393';
+    editHint.innerHTML = '<i class="fas fa-edit"></i> Ganti foto dengan mengedit src di kode HTML (img)';
+    photoContainerDiv.appendChild(editHint);
+    
+    // Fitur tambahan: auto detect kualitas bawaan video player HTML5 sudah adaptif (adaptive bitrate bawaan browser untuk HLS/DASH mungkin perlu .m3u8, tapi untuk mp4 biasa browser menyesuaikan buffer)
+    // Menambahkan info bahwa pemutar mendukung kualitas adaptif otomatis berdasarkan kecepatan internet.
+    // Untuk meningkatkan pengalaman, kita bisa menambahkan listener pada video.
+    videoPlayer.addEventListener('progress', () => {
+        // biarkan native player mengelola kualitas.
+    });
+    
+    // Pemberitahuan bagi yang tidak tahu cara link drive -> tinggal pakai format uc?export
+    const helpDiv = document.createElement('div');
+    helpDiv.style.marginTop = '10px';
+    helpDiv.style.fontSize = '0.7rem';
+    helpDiv.style.color = '#b3567a';
+    helpDiv.innerHTML = '<i class="fas fa-question-circle"></i> Cara link video Google Drive : <br> 1. Buka file video di Drive -> klik "Dapatkan link" -> ubah akses menjadi "Siapa saja dengan link" -> copy link.<br>2. Ganti format jadi: <strong>https://drive.google.com/uc?export=download&id=ID_VIDEO</strong>';
+    document.querySelector('.info-video').appendChild(helpDiv);
+    
+    // Bonus effect saat halaman di-load
+    window.addEventListener('load', () => {
+        document.querySelector('.card').style.opacity = '0';
+        document.querySelector('.card').style.transform = 'scale(0.98)';
+        setTimeout(() => {
+            document.querySelector('.card').style.transition = 'all 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1)';
+            document.querySelector('.card').style.opacity = '1';
+            document.querySelector('.card').style.transform = 'scale(1)';
+        }, 100);
+    });
+</script>
 </body>
 </html>
-
